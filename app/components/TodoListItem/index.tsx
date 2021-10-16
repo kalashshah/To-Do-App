@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, TextInput, KeyboardAvoidingView, Platform } from "react-native";
+import { View, TextInput } from "react-native";
 import CheckBox from "../CheckBox";
 
 interface TodoListItemProps {
@@ -34,11 +34,6 @@ const TodoListItem = ({ todo, onSubmit }: TodoListItemProps) => {
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "android" ? "padding" : "height"}
-      keyboardVerticalOffset={Platform.OS === "android" ? 130 : 0}
-      style={{ flex: 1 }}
-    >
       <View
         style={{
           flexDirection: "row",
@@ -63,7 +58,6 @@ const TodoListItem = ({ todo, onSubmit }: TodoListItemProps) => {
           onKeyPress={onKeyPress}
         />
       </View>
-    </KeyboardAvoidingView>
   );
 };
 
