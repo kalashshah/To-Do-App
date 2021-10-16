@@ -15,10 +15,22 @@ export default function TabOneScreen({
     { id: "3", content: "Sleep early", isComplete: false },
   ]);
 
+  const addNewTodo = (index: number) => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 0, { id: "4", content: "", isComplete: false });
+    setTodos(newTodos);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
-      <FlatList data={todos} renderItem={({item}) => <TodoListItem todo={item}/>} style={{width: '100%'}}/>
+      <FlatList
+        data={todos}
+        renderItem={({ item, index }) => (
+          <TodoListItem todo={item} onSubmit={() => addNewTodo(index + 1)} />
+        )}
+        style={{ width: "100%" }}
+      />
     </View>
   );
 }
