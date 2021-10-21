@@ -6,7 +6,7 @@ import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
 
-export default function TabOneScreen({
+export default function ToDoScreen({
   navigation,
 }: RootTabScreenProps<"TabOne">) {
   const [todos, setTodos] = useState([

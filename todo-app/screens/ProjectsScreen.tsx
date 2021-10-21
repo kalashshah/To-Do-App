@@ -5,7 +5,7 @@ import ProjectItem from "../components/ProjectItem";
 import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
 
-export default function TabTwoScreen() {
+export default function ProjectsScreen() {
   const [project, setProjects] = useState([
     { id: "1", title: "Project 1", createdAt: "4d" },
     { id: "1", title: "Project 1", createdAt: "4d" },

@@ -13,7 +13,7 @@ const CheckBox = (props: CheckboxProps) => {
 
   return (
     <Pressable onPress={onPress}>
-      <MaterialCommunityIcons name={name} size={30} color="black" />
+      <MaterialCommunityIcons name={name} size={30} color="white" />
     </Pressable>
   );
 };

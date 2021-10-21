@@ -14,7 +14,7 @@ interface TodoListItemProps {
 const TodoListItem = ({ todo, onSubmit }: TodoListItemProps) => {
   const [isChecked, setIsChecked] = useState(false);
   const [content, setContent] = useState("");
-  const input = useRef(null);
+  const input = useRef<TextInput>(null);
 
   useEffect(() => {
     if (!todo) return;
@@ -51,7 +51,7 @@ const TodoListItem = ({ todo, onSubmit }: TodoListItemProps) => {
         ref={input}
         onChangeText={setContent}
         value={content}
-        style={{ flex: 1, color: "black", fontSize: 18, marginLeft: 12 }}
+        style={{ flex: 1, color: "white", fontSize: 18, marginLeft: 12 }}
         multiline
         onSubmitEditing={onSubmit}
         blurOnSubmit

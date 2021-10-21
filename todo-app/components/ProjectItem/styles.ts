@@ -21,8 +21,9 @@ export default  StyleSheet.create({
     alignItems: "center",
   },
   title: {
+    color: "white",
     marginRight: 5,
-    fontSize: 22,
+    fontSize: 20,
   },
   time: {
     color: "grey",
