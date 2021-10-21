@@ -22,6 +22,7 @@ import ToDoScreen from "../screens/ToDoScreen";
 import ProjectsScreen from "../screens/ProjectsScreen";
 import LoginScreen from "../screens/LoginScreen";
 import SignUpScreen from "../screens/SignUpScreen";
+import SplashScreen from "../screens/SplashScreen";
 import {
   RootStackParamList,
   RootTabParamList,
@@ -53,6 +54,11 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerTitleAlign: "center" }}>
+      <Stack.Screen
+        name="SplashScreen"
+        component={SplashScreen}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="LoginScreen"
         component={LoginScreen}
