@@ -37,13 +37,15 @@ const resolvers = {
   },
   Mutation: {
     signUp: async (_, { input }, { db }) => {
+      const existingUser = await db.collection("Users").findOne({ email: input.email });
+      if(existingUser) throw new Error("Email already in use");
       const hashedPassword = bcrypt.hashSync(input.password);
       const newUser = {
         ...input,
         password: hashedPassword,
       };
-      const result = await db.collection("Users").insert(newUser);
-      const user = result.ops[0];
+      const result = await db.collection("Users").insertOne(newUser);
+      const user = await db.collection("Users").findOne({ _id: ObjectId(result.insertedId)})
       return {
         user,
         token: getToken(user),
@@ -51,7 +53,7 @@ const resolvers = {
     },
 
     signIn: async (_, { input }, { db }) => {
-      const user = await db.collection("Users").find({ email: input.email });
+      const user = await db.collection("Users").findOne({ email: input.email });
       const isCorrectPassword =
         user && bcrypt.compareSync(input.password, user.password);
       if (!user || !isCorrectPassword) {
@@ -70,7 +72,7 @@ const resolvers = {
         createdAt: new Date().toISOString(),
         userIds: [user._id],
       };
-      const result = await db.collection("TaskList").insert(newTaskList);
+      const result = await db.collection("TaskList").insertOne(newTaskList);
       return result.ops[0];
     },
 
@@ -117,7 +119,7 @@ const resolvers = {
         taskListId: ObjectId(taskListId),
         isCompleted: false,
       };
-      const result = await db.collection("ToDo").insert(newToDo);
+      const result = await db.collection("ToDo").insertOne(newToDo);
       return result.ops[0];
     },
 
